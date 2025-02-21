@@ -27,7 +27,7 @@ local options = {
   },
 
   window = {
-	documentation = cmp.config.window.bordered()
+    documentation = cmp.config.window.bordered()
   },
 
   snippet = {
@@ -49,7 +49,13 @@ local options = {
   mapping = {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-e>"] = cmp.mapping.close(),
+    ["<Esc>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.abort() -- Closes the completion window safely
+      else
+        fallback()  -- Preserves normal <Esc> behavior
+      end
+    end, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true

@@ -198,6 +198,14 @@ local builtin_plugins = {
     opts = function()
       require("plugins.configs.gitsigns")
     end
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = function()
+      require("plugins.configs.harpoon")
+    end
   }
 }
 
