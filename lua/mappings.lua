@@ -34,8 +34,21 @@ map("n", "<leader>c", "gcc", { remap = true })
 local builtin = require('telescope.builtin')
 map("n", "<C-p>", builtin.find_files, { desc = 'Telescope find files' })
 map("n", "<C-f>", builtin.live_grep, { desc = 'Telescope live grep' })
-map("n", "<leader>td", builtin.diagnostics)
+map("v", '<C-S-F>', function()
+  vim.cmd.normal { '"zy', bang = true }
+  local selection = vim.fn.getreg("z");
+  builtin.live_grep({ default_text = selection, initial_mode = "normal" });
+end)
 map("n", "<leader>fb", builtin.buffers, { desc = "Open Telescope to list buffers" })
+map("n", "<leader>ff", function()
+    builtin.resume({ initial_mode = "normal" })
+  end,
+  { desc = "Open Telescope last search" }
+)
+map('n', '<leader>fw', function()
+  local word = vim.fn.expand("<cword>")
+  builtin.grep_string({ search = word, initial_mode = "normal" })
+end)
 
 map("n", "<C-]>", vim.cmd.bnext)
 map("n", "<C-[>", vim.cmd.bprev)

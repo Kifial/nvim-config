@@ -206,6 +206,18 @@ local builtin_plugins = {
     opts = function()
       require("plugins.configs.harpoon")
     end
+  },
+  {
+    "folke/trouble.nvim",
+    opts = function()
+      require("plugins.configs.trouble")
+    end
+  },
+  {
+    "dmmulroy/tsc.nvim",
+    config = function()
+      require("plugins.configs.tsc")
+    end
   }
 }
 

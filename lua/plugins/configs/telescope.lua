@@ -1,4 +1,8 @@
-require("telescope").setup({
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+local trouble = require("trouble")
+
+telescope.setup({
   extensions = {
     undo = {
       mappings = {
@@ -15,7 +19,26 @@ require("telescope").setup({
         },
       },
     },
+  },
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-q>"] = function(prompt_bufnr)
+          actions.send_to_qflist(prompt_bufnr)
+          trouble.open({ mode = "qflist" })
+        end
+      },
+      n = {
+        ["<C-q>"] = function(prompt_bufnr)
+          actions.send_to_qflist(prompt_bufnr)
+          trouble.open({ mode = "qflist" })
+        end
+      },
+    }
   }
 })
+
+
+
 
 require("telescope").load_extension("undo")
