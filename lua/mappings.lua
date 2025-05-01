@@ -33,7 +33,13 @@ map("n", "<leader>c", "gcc", { remap = true })
 
 local builtin = require('telescope.builtin')
 map("n", "<C-p>", builtin.find_files, { desc = 'Telescope find files' })
-map("n", "<C-f>", builtin.live_grep, { desc = 'Telescope live grep' })
+map("n", "<C-f>", function()
+  require('telescope.builtin').live_grep({
+    additional_args = function()
+      return { "--hidden" }
+    end
+  })
+end, { desc = 'Telescope live grep' })
 map("v", '<C-S-F>', function()
   vim.cmd.normal { '"zy', bang = true }
   local selection = vim.fn.getreg("z");
@@ -47,7 +53,13 @@ map("n", "<leader>ff", function()
 )
 map('n', '<leader>fw', function()
   local word = vim.fn.expand("<cword>")
-  builtin.grep_string({ search = word, initial_mode = "normal" })
+  builtin.grep_string({ 
+    search = word,
+    initial_mode = "normal",
+    additional_args = function()
+      return { "--hidden" }
+    end
+  })
 end)
 
 map("n", "<C-]>", vim.cmd.bnext)
@@ -69,5 +81,6 @@ map("n", "<leader>u", "<cmd>Telescope undo<cr>")
 map("n", "<leader>g", "<cmd>G<CR><C-w>_")
 map("n", "gk", "<cmd>diffget //2<CR>")
 map("n", "gl", "<cmd>diffget //3<CR>")
+map("n", "gm", "<cmd>Gvdiffsplit!<CR>")
 
 map("n", "<Esc>", "<Esc>", { noremap = true })

@@ -105,39 +105,52 @@ local builtin_plugins = {
   --     vim.cmd([[colorscheme catppuccin]])
   --   end
   -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "storm", -- or "night" | "moon" | "day"
+  --
+  --       on_colors = function(colors)
+  --         colors.bg = "#1e1e1e"
+  --         colors.fg = "#d1d8f8"
+  --       end,
+  --
+  --       on_highlights = function(hl, c)
+  --         hl.LineNr = { fg = "#ffcc00" }      -- Relative line numbers
+  --         hl.LineNrAbove = { fg = "#999999" } -- Relative line numbers
+  --         hl.LineNrBelow = { fg = "#999999" } -- Relative line numbers
+  --         hl.Keyword = { fg = c.orange }      -- Async/Await color
+  --         hl.Special = { fg = "#f45fe6" }
+  --         hl.Statement = { fg = "#b77eff" }
+  --         hl.Identifier = { fg = "#b77eff" }
+  --         hl["@lsp.type.interface"] = { fg = "#38caa0" }
+  --         hl.Type = { fg = "#38caa0" }
+  --         hl.Function = { fg = "#ffe66e" }
+  --         hl["@property"] = { fg = "#d1d8f8" }
+  --         hl["@lsp.type.variable"] = { fg = "#67d1f6" }
+  --         hl["@lsp.typemod.type.defaultLibrary"] = { fg = "#4ec9a6" }
+  --         hl["@type.builtin"] = { fg = "#4ec9a6" }
+  --       end
+  --     })
+  --
+  --     vim.cmd([[colorscheme tokyonight]])
+  --   end,
+  -- },
   {
-    "folke/tokyonight.nvim",
+    'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
     config = function()
-      require("tokyonight").setup({
-        style = "storm", -- or "night" | "moon" | "day"
+      vim.o.termguicolors = true
 
-        on_colors = function(colors)
-          colors.bg = "#1e1e1e"
-          colors.fg = "#d1d8f8"
-        end,
-
-        on_highlights = function(hl, c)
-          hl.LineNr = { fg = "#ffcc00" }      -- Relative line numbers
-          hl.LineNrAbove = { fg = "#999999" } -- Relative line numbers
-          hl.LineNrBelow = { fg = "#999999" } -- Relative line numbers
-          hl.Keyword = { fg = c.orange }      -- Async/Await color
-          hl.Special = { fg = "#f45fe6" }
-          hl.Statement = { fg = "#b77eff" }
-          hl.Identifier = { fg = "#b77eff" }
-          hl["@lsp.type.interface"] = { fg = "#38caa0" }
-          hl.Type = { fg = "#38caa0" }
-          hl.Function = { fg = "#ffe66e" }
-          hl["@property"] = { fg = "#d1d8f8" }
-          hl["@lsp.type.variable"] = { fg = "#67d1f6" }
-          hl["@lsp.typemod.type.defaultLibrary"] = { fg = "#4ec9a6" }
-          hl["@type.builtin"] = { fg = "#4ec9a6" }
-        end
-      })
-
-      vim.cmd([[colorscheme tokyonight]])
-    end,
+      vim.g.gruvbox_material_background = 'hard'
+      vim.g.gruvbox_material_foreground = 'original'
+      vim.g.gruvbox_material_disable_italic_comment = 1
+      vim.cmd.colorscheme('gruvbox-material')
+    end
   },
   {
     "nvim-treesitter/nvim-treesitter",

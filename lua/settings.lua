@@ -28,3 +28,10 @@ vim.opt.scrolloff = 16
 vim.opt.updatetime = 50
 
 vim.opt.cursorline = true
+
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform",
+  },
+})

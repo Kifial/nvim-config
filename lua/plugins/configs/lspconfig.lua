@@ -47,3 +47,9 @@ lspconfig.eslint.setup({
     packageManager = 'yarn'
   },
 })
+
+lspconfig.gopls.setup({
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
+
+lspconfig.terraformls.setup({})

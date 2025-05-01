@@ -16,10 +16,10 @@ map("n", "<leader>td", function()
   trouble.toggle({ mode = "diagnostics" })
 end)
 
-map("n", "]t", function()
+map("n", "<leader>tn", function()
   trouble.next({ skip_groups = true, jump = true })
 end)
 
-map("n", "[t", function()
+map("n", "<leader>tp", function()
   trouble.prev({ skip_groups = true, jump = true })
 end)
