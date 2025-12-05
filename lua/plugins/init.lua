@@ -231,6 +231,9 @@ local builtin_plugins = {
     config = function()
       require("plugins.configs.tsc")
     end
+  },
+  {
+    "sindrets/diffview.nvim"
   }
 }
 

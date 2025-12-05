@@ -83,4 +83,9 @@ map("n", "gk", "<cmd>diffget //2<CR>")
 map("n", "gl", "<cmd>diffget //3<CR>")
 map("n", "gm", "<cmd>Gvdiffsplit!<CR>")
 
+map("n", "<leader>fho", "<cmd>DiffviewFileHistory %<CR>")
+map("n", "<leader>fhc", "<cmd>DiffviewClose<CR>")
+
+map("n", "<leader>tn", vim.lsp.buf.rename, opts)
+
 map("n", "<Esc>", "<Esc>", { noremap = true })
