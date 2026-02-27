@@ -1,14 +1,12 @@
 require("mason").setup()
 local mason_lspconfig = require("mason-lspconfig")
 
-local lspconfig = require("lspconfig")
-
 mason_lspconfig.setup({
 	ensure_installed = { "lua_ls", "eslint" },
 	automatic_installation = true,
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -42,14 +40,14 @@ lspconfig.lua_ls.setup({
   }
 })
 
-lspconfig.eslint.setup({
+vim.lsp.config('eslint', {
   settings = {
     packageManager = 'yarn'
   },
 })
 
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
 })
 
-lspconfig.terraformls.setup({})
+vim.lsp.config('terraformls', {})
